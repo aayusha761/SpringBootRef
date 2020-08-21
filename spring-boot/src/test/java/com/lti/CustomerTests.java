@@ -23,7 +23,7 @@ class CustomerTests {
 	@Test
 	void add() {
 		Customer c = new Customer();
-		c.setId(2);
+//		c.setId(2);
 		c.setName("Aayush");
 		c.setPassword("aayush");
 		c.setDateOfBirth(LocalDate.of(1998, 11, 06));
@@ -32,6 +32,14 @@ class CustomerTests {
 		
 		
 		custRepo.save(c);
+	}
+	
+	@Test
+	void fetchByEmailAndPassword() {
+		
+		int id = custRepo.findByUsernamePassword("aayush@lti", "aayush");
+		System.out.println(id);
+		
 	}
 
 }

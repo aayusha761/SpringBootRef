@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -16,14 +17,17 @@ import javax.persistence.Table;
 public class Customer {
 
 	@Id
+	@GeneratedValue
 	private int id;
 	private String name;
 	private LocalDate dateOfBirth;
 	private String email;
 	private String password;
+	private String profilePicPath;
 	
 	@OneToMany(mappedBy = "customer",cascade = CascadeType.MERGE)
 	private List<Order> orders;
+	
 	
 	@OneToMany(mappedBy = "customer",cascade = CascadeType.MERGE)
 	private List<Xyz> xyz;
@@ -58,6 +62,11 @@ public class Customer {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+	public String getProfilePicPath() {
+		return profilePicPath;
+	}
+	public void setProfilePicPath(String profilePicPath) {
+		this.profilePicPath = profilePicPath;
+	}
 	
 }

@@ -38,4 +38,11 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 				setParameter("email", username)
 				.setParameter("password", password).getSingleResult();
 	}
+	
+	@Override
+	public boolean exists(String username) {
+		return (Long) entityManager.createQuery("select count(c.id) from Customer c where c.email = :email")
+				.setParameter("email", username)
+				.getSingleResult() == 1 ? true : false;
+	}
 }

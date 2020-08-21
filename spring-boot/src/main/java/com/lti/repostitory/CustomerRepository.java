@@ -14,4 +14,6 @@ public interface CustomerRepository {
 
 	int findByUsernamePassword(String username, String password);
 
+	boolean exists(String username);
+
 }
